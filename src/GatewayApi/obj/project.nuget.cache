@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G8+R0DWEWVI=",
+  "dgSpecHash": "CbMh9DjJdz4=",
   "success": true,
-  "projectFilePath": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/GatewayApi.csproj",
+  "projectFilePath": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/GatewayApi.csproj",
   "expectedPackageFiles": [
     "/Users/matthewju/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/matthewju/.nuget/packages/microsoft.aspnetcore.openapi/10.0.8/microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
@@ -38,9 +38,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/GatewayApi.csproj",
+      "projectPath": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/GatewayApi.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/GatewayApi.csproj",
+      "filePath": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/GatewayApi.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"

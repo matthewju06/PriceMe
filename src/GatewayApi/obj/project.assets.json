@@ -2211,11 +2211,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/GatewayApi.csproj",
+      "projectUniqueName": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/GatewayApi.csproj",
       "projectName": "GatewayApi",
-      "projectPath": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/GatewayApi.csproj",
+      "projectPath": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/GatewayApi.csproj",
       "packagesPath": "/Users/matthewju/.nuget/packages/",
-      "outputPath": "/Users/matthewju/Repos/PolyContext/src/GatewayApi/obj/",
+      "outputPath": "/Users/matthewju/Repos/pearl-metric/src/GatewayApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/matthewju/.nuget/NuGet/NuGet.Config"

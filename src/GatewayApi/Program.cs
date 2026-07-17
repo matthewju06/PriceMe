@@ -1,15 +1,15 @@
-using GatewayApi;
 using Microsoft.EntityFrameworkCore;
+using PearlMetric.GatewayApi.Data; // 1. Added this to let Program see PearlMetricDb
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = "Host=localhost;Port=5432;Database=polycontext_dev;Username=polyadmin;Password=PolySecurePassword2026!";
+// 2. Updated the database name in the connection string to match the new identity
+var connectionString = "Host=localhost;Port=5432;Database=pearlmetric_dev;Username=polyadmin;Password=PolySecurePassword2026!";
 
-builder.Services.AddDbContext<PolyContextDb>(options =>
+builder.Services.AddDbContext<PearlMetricDb>(options =>
     options.UseNpgsql(connectionString));
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
