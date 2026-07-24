@@ -54,6 +54,9 @@ public static class FrameEndpoints
             })
             .DisableAntiforgery()
             .WithName("UploadFrames")
+            .WithSummary("Upload scan frames")
+            .WithDescription("Multipart upload of one or more JPEG/PNG frames for a Pending run. Form field name: files. Frames append with increasing sequence indexes. Call analyze after capture is finished.")
+            .Accepts<IFormFileCollection>("multipart/form-data")
             .Produces<RegisterFramesResponse>(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status404NotFound)
             .ProducesValidationProblem();

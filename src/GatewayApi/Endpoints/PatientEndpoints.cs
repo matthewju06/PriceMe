@@ -24,6 +24,8 @@ public static class PatientEndpoints
                 return Results.Created($"/api/patients/{response.Id}", response);
             })
             .WithName("CreatePatient")
+            .WithSummary("Create patient")
+            .WithDescription("Registers a patient record so regimens and scans can be attached. First step when onboarding someone into a whitening program.")
             .Produces<PatientResponse>(StatusCodes.Status201Created)
             .ProducesValidationProblem();
 
@@ -36,6 +38,8 @@ public static class PatientEndpoints
                 return response is null ? Results.NotFound() : Results.Ok(response);
             })
             .WithName("GetPatient")
+            .WithSummary("Get patient")
+            .WithDescription("Loads a patient by id for profile display or before starting a new regimen.")
             .Produces<PatientResponse>()
             .Produces(StatusCodes.Status404NotFound);
 

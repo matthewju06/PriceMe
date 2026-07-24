@@ -37,6 +37,8 @@ public static class ApiContractEndpoints
                         Points: []),
                     statusCode: StatusCodes.Status501NotImplemented))
             .WithName("GetRegimenProgress")
+            .WithSummary("Get regimen progress (placeholder)")
+            .WithDescription("Will return whitening progress over time once analytics ships (PM-020). Currently returns 501.")
             .Produces<RegimenProgressResponse>(StatusCodes.Status501NotImplemented);
     }
 }

@@ -34,6 +34,8 @@ public static class ScanRunEndpoints
                     : Results.Created($"/api/runs/{response.Id}", response);
             })
             .WithName("CreateScanRun")
+            .WithSummary("Create scan run")
+            .WithDescription("Opens a Pending capture session for one visit/device. Upload frames next, then call analyze.")
             .Produces<ScanRunResponse>(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status404NotFound)
             .ProducesValidationProblem();
@@ -47,6 +49,8 @@ public static class ScanRunEndpoints
                 return response is null ? Results.NotFound() : Results.Ok(response);
             })
             .WithName("GetScanRun")
+            .WithSummary("Get scan run")
+            .WithDescription("Returns run status and frame/sample counts. Use to poll after upload or analysis.")
             .Produces<ScanRunResponse>()
             .Produces(StatusCodes.Status404NotFound);
 
@@ -69,6 +73,8 @@ public static class ScanRunEndpoints
                 }
             })
             .WithName("AnalyzeScanRun")
+            .WithSummary("Analyze scan run")
+            .WithDescription("Runs shade analysis on uploaded frames (fake CV in local MVP). Transitions Pending→Processing→Completed/Failed, persists calibration and Lab/DeltaE samples, and links DeltaE to the regimen's first completed scan when present. Idempotent once Completed.")
             .Produces<ScanRunResponse>()
             .Produces(StatusCodes.Status404NotFound)
             .ProducesValidationProblem();
@@ -82,6 +88,8 @@ public static class ScanRunEndpoints
                 return detail is null ? Results.NotFound() : Results.Ok(detail);
             })
             .WithName("GetScanRunAnalysis")
+            .WithSummary("Get analysis detail")
+            .WithDescription("Returns calibration profile and color metric samples for charts, shade comparison, and clinician review after a successful analyze.")
             .Produces<ScanRunAnalysisDetailResponse>()
             .Produces(StatusCodes.Status404NotFound);
 

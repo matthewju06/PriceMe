@@ -34,6 +34,8 @@ public static class RegimenEndpoints
                     : Results.Created($"/api/regimens/{response.Id}", response);
             })
             .WithName("CreateRegimen")
+            .WithSummary("Create whitening regimen")
+            .WithDescription("Starts a product/schedule regimen for a patient. Scan runs and progress are scoped to this regimen.")
             .Produces<RegimenResponse>(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status404NotFound)
             .ProducesValidationProblem();
@@ -47,6 +49,8 @@ public static class RegimenEndpoints
                 return response is null ? Results.NotFound() : Results.Ok(response);
             })
             .WithName("GetRegimen")
+            .WithSummary("Get regimen")
+            .WithDescription("Returns regimen details (product, start date, duration, interval) for clinic UI or schedule reminders.")
             .Produces<RegimenResponse>()
             .Produces(StatusCodes.Status404NotFound);
 
@@ -65,6 +69,8 @@ public static class RegimenEndpoints
                 return response is null ? Results.NotFound() : Results.Ok(response);
             })
             .WithName("UpdateRegimen")
+            .WithSummary("Update regimen")
+            .WithDescription("Adjusts regimen schedule or product metadata without creating a new patient program.")
             .Produces<RegimenResponse>()
             .Produces(StatusCodes.Status404NotFound)
             .ProducesValidationProblem();

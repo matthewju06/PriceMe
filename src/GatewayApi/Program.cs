@@ -1,11 +1,13 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
 using PearlMetric.GatewayApi.Configuration;
 using PearlMetric.GatewayApi.Data;
 using PearlMetric.GatewayApi.Endpoints;
 using PearlMetric.GatewayApi.Services;
 using PearlMetric.GatewayApi.Services.Cv;
 using PearlMetric.GatewayApi.Storage;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,7 +58,21 @@ builder.Services
     .ValidateOnStart();
 
 builder.Services.AddProblemDetails();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer((document, _, _) =>
+    {
+        document.Info = new OpenApiInfo
+        {
+            Title = "PearlMetric Gateway API",
+            Version = "v1",
+            Description =
+                "Local MVP API for patient regimens, scan capture, frame upload, and shade analysis. " +
+                "Typical clinic flow: create patient → start regimen → create scan run → upload frames → analyze → read analysis."
+        };
+        return Task.CompletedTask;
+    });
+});
 
 var app = builder.Build();
 
@@ -65,6 +81,10 @@ app.UseStatusCodePages();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+    {
+        options.WithTitle("PearlMetric API");
+    });
 }
 
 app.UseHttpsRedirection();
@@ -74,7 +94,9 @@ app.MapGet("/health", () => Results.Ok(new
     Status = "OK",
     Timestamp = DateTime.UtcNow
 }))
-.WithName("Health");
+.WithName("Health")
+.WithSummary("Health check")
+.WithDescription("Liveness probe for local runs and orchestration. Not patient-facing.");
 
 app.MapApiContractEndpoints();
 
