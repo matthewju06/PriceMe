@@ -53,6 +53,9 @@ secrets.json
 
 # Runtime data
 uploads/
-storage/
+# Frame bytes from LocalFileImageStore (ImageStorage:RootPath). Not the Storage/ code folder.
+src/GatewayApi/frame-data/
 var/
 *.log
+# Leftover runtime frames if RootPath collided with Storage/ on macOS
+src/GatewayApi/Storage/runs/

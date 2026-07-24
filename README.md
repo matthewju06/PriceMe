@@ -29,7 +29,7 @@ graph TD
 |---|---|
 | **GatewayApi** | Minimal APIs, validation, EF persistence, frame storage, analysis orchestration |
 | **PostgreSQL 18** | Patients, regimens, runs, frames, calibration, color samples |
-| **Local image store** | Frame bytes under `src/GatewayApi/storage/` (gitignored) |
+| **Local image store** | Frame bytes under `src/GatewayApi/frame-data/` (gitignored) |
 | **Fake CV client** | Deterministic Lab/DeltaE stand-in until the Python worker lands |
 | **Angular frontend** | Not scaffolded yet (`src/Frontend/` reserved) |
 
